@@ -1,0 +1,28 @@
+[
+  {
+    "ContainingType": "Api.Controllers.ConversaoController",
+    "Method": "converter",
+    "RelativePath": "api/Conversao/converter",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "de",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "para",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "valor",
+        "Type": "System.Decimal",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
