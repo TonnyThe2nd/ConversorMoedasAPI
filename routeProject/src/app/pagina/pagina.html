@@ -1,0 +1,74 @@
+<div class="container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Conversor de Moedas</mat-card-title>
+      <mat-card-subtitle>Converta valores entre diferentes moedas</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="form-container">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Moeda de origem</mat-label>
+          <input matInput type="text" placeholder="Ex: USD" [(ngModel)]="de" required>
+          <mat-icon matSuffix>currency_exchange</mat-icon>
+          <mat-hint>Digite o código da moeda (ex: USD, EUR, BRL)</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Moeda de destino</mat-label>
+          <input matInput type="text" placeholder="Ex: EUR" [(ngModel)]="para" required>
+          <mat-icon matSuffix>swap_horiz</mat-icon>
+          <mat-hint>Digite o código da moeda de destino</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Valor</mat-label>
+          <input matInput type="number" placeholder="0.00" [(ngModel)]="valor" required min="0">
+          <mat-icon matSuffix>attach_money</mat-icon>
+          <span matPrefix>R$&nbsp;</span>
+        </mat-form-field>
+      </div>
+
+      <button mat-raised-button color="primary" (click)="converterValor()" 
+              [disabled]="!de || !para || !valor" class="convert-button">
+        <mat-icon>autorenew</mat-icon>
+        Converter
+      </button>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card *ngIf="resultado" class="result-card">
+    <mat-card-header>
+      <mat-card-title>Resultado da Conversão</mat-card-title>
+    </mat-card-header>
+    
+    <mat-card-content>
+      <div class="result-container">
+        <div class="result-item">
+          <mat-icon>arrow_forward</mat-icon>
+          <span>De: <strong>{{ de | uppercase }}</strong></span>
+        </div>
+        
+        <div class="result-item">
+          <mat-icon>arrow_forward</mat-icon>
+          <span>Para: <strong>{{ para | uppercase }}</strong></span>
+        </div>
+        
+        <div class="result-item">
+          <mat-icon>arrow_forward</mat-icon>
+          <span>Valor: <strong>{{ valor | currency:'BRL' }}</strong></span>
+        </div>
+        
+        <mat-divider></mat-divider>
+        
+        <div class="final-result">
+          <mat-icon>check_circle</mat-icon>
+          <span>Resultado: <strong>{{ resultado | currency:para.toUpperCase() }}</strong></span>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-progress-spinner *ngIf="loading" diameter="40" mode="indeterminate" color="primary" class="spinner">
+  </mat-progress-spinner>
+</div>
