@@ -1,0 +1,3 @@
+[submodule "ConversorMoedasAPI"]
+	path = ConversorMoedasAPI
+	url = https://github.com/TonnyThe2nd/ConversorMoedasAPI.git
